@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import { FaBars } from 'react-icons/fa'
-import { GrClose } from 'react-icons/gr'
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 
 const Navbar = () => {
-  const [menuToggle, setMenuToggle] = useState(false)
+  const [menuToggle, setMenuToggle] = useState(false);
 
   return (
     <nav className="w-full bg-inherit">
-      <div className="flex items-center justify-between w-[90%] mx-auto py-5 border-b-2 border-gray-700">
-        <h1 className="text-4xl text-white font-extrabold">Cuddle.io</h1>
+      <div className="flex items-center font-Grotesk justify-between w-[90%] mx-auto py-4 border-b-2 border-gray-700">
+        <h1 className="text-3xl text-white font-semibold">Cuddle.io</h1>
         <ul className="hidden md:flex text-lg space-x-10 text-white font-semibold items-center">
           <li>Home</li>
           <li>About</li>
           <li>Docs</li>
-          <li className="bg-[#1F2937] border border-gray-500 cursor-pointer hover:bg-[#0e141c] py-2 px-6 rounded-full">Get Started</li>
+          <li className="bg-black/40  border border-gray-500 cursor-pointer hover:bg-black/10 py-2 px-6 rounded-xl">
+            Get Started
+          </li>
         </ul>
         <div className="md:hidden text-xl">
           {menuToggle ? (
@@ -29,16 +31,16 @@ const Navbar = () => {
               </li>
               <li>Home</li>
               <li>About</li>
-              <li>Contacts</li>
-              <li className="bg-[#1F2937] py-2 px-6 text-white rounded-full">
-                Login
+              <li>Docs</li>
+              <li className="bg-[#1F2937] py-2 px-6 text-white rounded-2xl">
+                Get Started!
               </li>
             </ul>
           )}
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

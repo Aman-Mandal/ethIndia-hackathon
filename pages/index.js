@@ -3,7 +3,7 @@ import Header from "../components/Header/Header";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-[#1e1e1e] h-screen">
       <Head>
         <title>Cuddle!</title>
         <meta
