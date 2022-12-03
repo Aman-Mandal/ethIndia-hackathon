@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 export const TransactionContext = createContext();
 
 const TransactionContextProvider = ({ children }) => {
-  const [connected, setConnected] = useState(false);
+  const [connected, setConnected] = useState("");
 
   const connectWallet = async () => {
     try {

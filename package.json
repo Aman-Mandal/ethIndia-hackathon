@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@huddle01/huddle01-iframe": "^0.0.8",
+    "@pushprotocol/uiweb": "^0.2.3",
+    "@rainbow-me/rainbowkit": "^0.8.0",
     "ethers": "^5.7.2",
     "next": "13.0.6",
+    "randomstring": "^1.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "wagmi": "^0.8.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
