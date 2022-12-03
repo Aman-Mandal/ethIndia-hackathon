@@ -1,43 +1,57 @@
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
-import { GrClose } from "react-icons/gr";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import Link from "next/link";
+import { TransactionContext } from "../../context/Context";
 
 const Navbar = () => {
-  const [menuToggle, setMenuToggle] = useState(false);
+  // const [menuToggle, setMenuToggle] = useState(false);
+
+  const { connected, connectWallet } = useContext(TransactionContext);
+
+  const router = useRouter();
+
+  const homepageHandler = () => {
+    router.push("/");
+  };
 
   return (
-    <nav className="w-full bg-inherit">
-      <div className="flex items-center font-Grotesk justify-between w-[90%] mx-auto py-4 border-b-2 border-gray-700">
-        <h1 className="text-3xl text-white font-semibold">Cuddle.io</h1>
-        <ul className="hidden md:flex text-lg space-x-10 text-white font-semibold items-center">
-          <li>Home</li>
-          <li>About</li>
-          <li>Docs</li>
-          <li className="bg-black/40  border border-gray-500 cursor-pointer hover:bg-black/10 py-2 px-6 rounded-xl">
-            Get Started
-          </li>
-        </ul>
-        <div className="md:hidden text-xl">
-          {menuToggle ? (
-            <GrClose onClick={() => setMenuToggle(false)} />
-          ) : (
-            <FaBars onClick={() => setMenuToggle(true)} />
-          )}
+    <nav className=" text-white bg-[#1e1e1e] py-4 top-0 z-[20] fixed  w-full">
+      <div className="flex justify-between w-[90%] mx-auto items-center">
+        <h2
+          onClick={homepageHandler}
+          className="font-Grotesk font-semibold text-2xl cursor-pointer"
+        >
+          WarranTan.
+        </h2>
 
-          {menuToggle && (
-            <ul className=" bg-white h-screen space-y-6 z-10 -right-2 fixed top-0 w-[70vw] flex flex-col items-end text-2xl pr-8 py-10 shadow-xl rounded-md">
-              <li className="py-2">
-                <GrClose onClick={() => setMenuToggle(false)} />
-              </li>
-              <li>Home</li>
-              <li>About</li>
-              <li>Docs</li>
-              <li className="bg-[#1F2937] py-2 px-6 text-white rounded-2xl">
-                Get Started!
-              </li>
-            </ul>
-          )}
+        <div className="flex gap-10 items-center">
+          <ul className="flex gap-14 uppercase font-thin text-sm tracking-widest">
+            <li className="hover:scale-105 hover:font-semibold cursor-pointer transition-all 0.1s ease-in-out">
+              <Link href="/register">Register as Seller</Link>
+            </li>
+            <li className="hover:scale-105 hover:font-semibold cursor-pointer transition-all 0.1s ease-in-out">
+              <Link href="/sell">Customer</Link>
+            </li>
+            <li className="hover:scale-105 hover:font-semibold cursor-pointer transition-all 0.1s ease-in-out">
+              <Link href="/release">Docs</Link>
+            </li>
+            <li className="hover:scale-105 hover:font-semibold cursor-pointer transition-all 0.1s ease-in-out">
+              <Link href="/about">About Us</Link>
+            </li>
+          </ul>
         </div>
+        {connected ? (
+          <button className="bg-[#1e1e1e] border border-[#1e1e1e] text-white font-Grotesk font-semibold px-6 py-3 rounded-full hover:scale-105 transition-all 0.1s ease-in-out">
+            Connected
+          </button>
+        ) : (
+          <button
+            onClick={connectWallet}
+            className="bg-gray-600 text-white text-lg px-4 py-2 rounded-md font-Grotesk font-medium hover:scale-105 hover:bg-gray-300 hover:text-black"
+          >
+            Connect Wallet
+          </button>
+        )}
       </div>
     </nav>
   );
