@@ -1,16 +1,16 @@
 import { useRouter } from "next/router";
 
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
+// import { useContract, useSigner, useContractEvent } from 'wagmi'
+// import {ABI} from "../../utils/abi"
 
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { TransactionContext } from "../../context/Context";
 const Header = () => {
-  const { address, isConnecting, isDisconnected } = useAccount();
 
   const router = useRouter();
+  const {addMember} = useContext(TransactionContext)
 
-  const launchAppHandler = () => {
-    router.push("/connectHuddle");
-  };
   return (
     <header className="bg-[#1E1e1e] h-screen bg-[url('/newbg.svg')] bg-center">
       <section className="w-[85%] mx-auto h-[95%] flex flex-col justify-between">
@@ -27,7 +27,7 @@ const Header = () => {
           </p>
 
           <button
-            onClick={launchAppHandler}
+            onClick={addMember}
             className="py-3 w-[10rem] mt-8 border font-Grotesk font-semibold border-gray-200 rounded-full bg-gradient-to-r text-transparent bg-clip-text from-[#FD42FB] via-[#CD9ECD] to-[#753FF3] hover:scale-105 transition-all 0.1s ease-in-out "
           >
             Let's Connect
